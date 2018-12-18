@@ -35,10 +35,12 @@ class Letter {
       this.guessed = true;
       return this.guessed;
     }
-    
     return false;
   }
   
+  //
+  // Getter function
+  //
   get letterGuessed() {
     return this.guessed;
   }

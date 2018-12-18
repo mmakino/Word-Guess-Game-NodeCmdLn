@@ -13,35 +13,26 @@
 const prompt = require("prompt");
 const colors = require("colors/safe");
 const Word = require("./Word");
+const QWords = require("./qwords")
 
-const QWords = [
-  "Jurassic Park",
-  "Forrest Gump",
-  "The Shawshank Redemption",
-  "What's Eating Gilbert Grape",
-  "Good Will Hunting",
-  "Pulp Fiction",
-  "Reservoir Dogs",
-  "The Usual Suspects",
-  "Toy Story",
-  "Seven",
-  "Ground Hog Day",
-  "Fargo",
-  "Unforgiven",
-  "American Beauty",
-  "L.A. Confidential"
-]
+const MAX_GUESS = 10;            // The initial number of guesses
+let remainingGuess = MAX_GUESS;  // The remaining number of guesses
+const word = new Word();         // Word constructor object
 
-let remainingGuess = 10;
-let word = new Word();
-
-word.letters = selectWord();
+word.letters = selectWords();
 askUser();
 
-function selectWord(index = Math.floor(Math.random() * QWords.length)) {
+//
+// Select a movie title from the Q90sMovies array
+//
+function selectWords() {
+  const index = Math.floor(Math.random() * QWords.length);
   return QWords[index];
 }
 
+//
+// Prompt a user to enter a letter
+//
 function askUser() {
   prompt.message = colors.white(`\n${word.letters}\n`);
   prompt.delimiter = colors.green("");
@@ -66,8 +57,8 @@ function askUser() {
 
     if (word.allGussed()) {
       console.log(colors.cyan("\nYou got it all correct! A next word"));
-      remainingGuess = 10;
-      word.letters = selectWord();
+      remainingGuess = MAX_GUESS;
+      word.letters = selectWords();
     }
     
     if (remainingGuess > 0) {

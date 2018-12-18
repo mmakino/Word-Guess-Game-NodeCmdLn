@@ -14,7 +14,6 @@
 //     function on each letter object (the second function defined in Letter.js)
 //
 //   Word.js should only require Letter.js
-//   
 //
 
 "use strict";
@@ -26,20 +25,26 @@ class Word {
     this.word = (word.length > 0) ? this.letters(word) : [];
   }
   
-  /**
-   * @param {{ split: (arg0: string) => { map: (arg0: (character: any) => void) => any[]; }; }} word
-   */
+  //
+  // Setter function for initializing word(s)
+  //
   set letters(word) {
     this.word = word.split("").map(character => {
       return new Letter(character);
     }); 
   }
   
+  //
+  // Getter function for the word
+  //
   get letters() {
     // console.log(this.word);
     return this.word.join(" ");
   }
   
+  //
+  // Check whether the _character_ is included or not
+  //
   guess(character) {
     const guessIsRight = this.word.some(letter => { 
       return letter.guess(character);
@@ -54,12 +59,18 @@ class Word {
     return guessIsRight;
   }
   
+  //
+  // Check whether all the letters have been gussed or not
+  //
   allGussed() {
     return this.word.every(function(letter) {
       return letter.letterGuessed;
     });
   }
   
+  //
+  // The original word string
+  //
   answer() {
     return this.word.map(letter => letter.character).join("");
   }
