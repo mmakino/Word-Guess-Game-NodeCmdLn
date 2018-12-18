@@ -1,0 +1,24 @@
+{
+  "name": "Word-Guess-NodeJS",
+  "version": "1.0.0",
+  "description": "a Word Guess command-line game using javascript constructor functions",
+  "main": "index.js",
+  "dependencies": {
+    "prompt": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmakino/Word-Guess-NodeJS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mmakino/Word-Guess-NodeJS/issues"
+  },
+  "homepage": "https://github.com/mmakino/Word-Guess-NodeJS#readme"
+}
