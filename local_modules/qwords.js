@@ -5,14 +5,15 @@ the list as QWords array.
 -----------------------------------------------------------
 */
 
-const questionFile = "./90s_movies.txt";
 const fs = require('fs');
 
-console.log(questionFile);
+function questionWords(questionFile) {
+  console.log(questionFile);
+  const content = fs.readFileSync(questionFile, 'utf8');
+  const words = content.split("\n");
+  words.pop();
+  
+  return words;
+}
 
-const content = fs.readFileSync(questionFile, 'utf8');
-const words = content.split("\n");
-words.pop();
-
-let QWords = words;
-module.exports = QWords;
+module.exports = questionWords;

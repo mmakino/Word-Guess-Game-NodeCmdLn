@@ -12,12 +12,16 @@
 
 const prompt = require("prompt");
 const colors = require("colors/safe");
-const Word = require("./Word");
-const QWords = require("./qwords")
+const Word = require("./local_modules/Word");
+const QWords = require("./local_modules/qwords");
+
+let questionFile = ("./etc/90s_movies.txt");
+const questionWords = QWords(questionFile);
 
 const MAX_GUESS = 10;            // The initial number of guesses
 let remainingGuess = MAX_GUESS;  // The remaining number of guesses
 const word = new Word();         // Word constructor object
+
 
 word.letters = selectWords();
 askUser();
@@ -26,8 +30,8 @@ askUser();
 // Select a movie title from the Q90sMovies array
 //
 function selectWords() {
-  const index = Math.floor(Math.random() * QWords.length);
-  return QWords[index];
+  const index = Math.floor(Math.random() * questionWords.length);
+  return questionWords[index];
 }
 
 //
